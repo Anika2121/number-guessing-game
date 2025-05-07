@@ -1,0 +1,36 @@
+{% extends 'guessing_game/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>🏆 Leaderboard 🏆</h1>
+    <div class="leaderboard">
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in top_players %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.score }}</td>
+                    <td>{{ player.date|date:"M d, Y" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="back-link">
+        <a href="{% url 'guessing_game:game' %}" class="btn btn-class-name">
+            <span class="back"></span>
+            <span class="front">Back to Game</span>
+        </a>
+    </div>
+</div>
+{% endblock %} 

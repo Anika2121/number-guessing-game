@@ -1,0 +1,44 @@
+{% extends 'guessing_game/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Number Guessing Game</h1>
+    <p class="instructions">🎲 Guess a Number Between 1 and 100! 🎲</p>
+    <form id="guessForm" method="post">
+        {% csrf_token %}
+        <div class="game-area">
+            <div class="input-wrapper">
+                <input class="input" type="number" id="guessInput" placeholder="Enter your guess" name="guess" min="1" max="100" required />
+            </div>
+            <button class="btn btn-class-name" id="btn1" type="button" onclick="submitGuess()">
+                <span class="back"></span>
+                <span class="front"></span>
+            </button>
+            <p class="btn-label">Submit</p>
+            <button class="btn btn-class-name" id="btn2" type="button" onclick="resetGame()">
+                <span class="back"></span>
+                <span class="front"></span>
+            </button>
+            <p class="btn-label">New Game</p>
+        </div>
+    </form>
+    <div id="message" class="message"></div>
+    <div id="attempts" class="attempts">Attempts: 0</div>
+
+    <!-- Score Submission Form (Hidden by default) -->
+    <div id="scoreForm" class="score-form" style="display: none;">
+        <h3>Save Your Score!</h3>
+        <input type="text" id="playerName" placeholder="Enter your name" required>
+        <button onclick="saveScore()">Save Score</button>
+    </div>
+
+    <!-- Leaderboard Link -->
+    <div class="leaderboard-link">
+        <a href="{% url 'guessing_game:leaderboard' %}" class="btn btn-class-name">
+            <span class="back"></span>
+            <span class="front">Leaderboard</span>
+        </a>
+    </div>
+</div>
+{% endblock %}

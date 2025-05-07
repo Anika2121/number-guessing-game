@@ -1,0 +1,590 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    /* background: linear-gradient(135deg, #6e8efb, #a777e3); */
+    background: url(../img/background.png) no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgba(213, 213, 211, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.696);
+    text-align: center;
+    max-width: 900px;
+    width: 90%; /* Adjusted for better responsiveness */
+    margin: 1rem; /* Added margin to prevent edge sticking on small screens */
+}
+
+/* h1 {
+    color: #fffeff;
+    margin-bottom: 1rem;
+    font-size: 2.3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Added shadow for depth */
+/* } */
+h1 {
+    position: relative;
+    font-size: 3.3em;
+    letter-spacing:2px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular';
+    display:table;
+    margin:40px auto;
+    cursor:pointer;
+    transition:.6s;
+    color: #a0a2a5;
+    font-family: "Tuffy", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  h1:before,
+  h1:after {
+    content:attr(data-text);
+    transition:.6s;
+  }
+  h1:before {
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index:-1;
+    text-shadow:
+     0px 0px,
+     0px 0px,
+     0px 0px,
+     0px 0px,
+     0px 0px,
+     0px 0px,
+     0px 0px,
+     0px 0px,
+     0px 0px,
+     0px 0px;
+    -webkit-mask:repeating-linear-gradient(45deg, transparent 0 3px, rgba(213, 23, 230, 0.659) 0 6px);
+            mask:repeating-linear-gradient(45deg, transparent 0 3px, rgba(170, 24, 165, 0.5) 0 6px);
+  }
+  h1:hover {
+    transform:translate(-10px,-10px);
+  }  
+  h1:hover:before {
+    text-shadow:
+     1px 1px,
+     2px 2px,
+     3px 3px,
+     4px 4px,
+     5px 5px,
+     6px 6px,
+     7px 7px,
+     8px 8px,
+     9px 9px,
+     10px 10px;
+  }
+.instructions {
+    display: flex;
+    justify-content: center;
+    color: #4a2c5f; /* Darker color for better contrast */
+    margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for readability */
+}
+
+.game-area {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="number"] {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+    border-color: #6e8efb;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background: #6e8efb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: #5a78e0;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.btn {
+    display: flex;
+    flex-direction: column; /* Stack buttons and labels vertically */
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-class-name {
+    --primary: 255, 90, 120;
+    --secondary: 150, 50, 60;
+    width: 60px;
+    height: 50px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    outline: 10px solid rgb(var(--primary), .5);
+    border-radius: 100%;
+    position: relative;
+    transition: .3s;
+}
+
+#btn1 {
+    --primary: 147, 112, 219; /* Red for Submit */
+    --secondary: 106, 90, 205;
+}
+
+#btn2 {
+    --primary: 102, 205, 170; /* Purple for New Game */
+    --secondary: 32, 178, 170; /* Darker purple shade */
+}
+
+.btn-class-name .back {
+    background: rgb(var(--secondary));
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-class-name .front {
+    background: linear-gradient(0deg, rgba(var(--primary), .6) 20%, rgba(var(--primary)) 50%);
+    box-shadow: 0 .5em 1em -0.2em rgba(var(--secondary), .5);
+    border-radius: 100%;
+    position: absolute;
+    border: 1px solid rgb(var(--secondary));
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: inherit;
+    transform: translateY(-15%);
+    transition: .15s;
+    color: rgb(var(--secondary));
+}
+
+.btn-class-name:active .front {
+    transform: translateY(0%);
+    box-shadow: 0 0;
+}
+
+.btn-label {
+    color: #4a2c5f;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+/* From Uiverse.io by 0xnihilism */
+.input-wrapper {
+    position: relative;
+    width: 100%; /* Full width for responsiveness */
+    max-width: 300px;
+    padding: 3px;
+    border-radius: 1.7rem;
+    overflow: hidden;
+}
+
+.input-wrapper input {
+    background-color: #f5f5f5;
+    border: 2px solid #ddd;
+    padding: 1.2rem 1rem 1.2rem 3rem;
+    font-size: 1.1rem;
+    width: 100%;
+    border-radius: 1.5rem;
+    color: #ff7f7f;
+    box-shadow: 0 0.4rem #dfd9d9, inset 0 0 0 transparent;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    z-index: 2;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0.6rem #dfd9d9, 0 0 15px rgba(74, 144, 226, 0.7);
+    transform: translateY(-3px) scale(1.01);
+}
+
+.input-wrapper input::placeholder {
+    color: #a0c0e8;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus::placeholder {
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+.input-wrapper::after {
+    content: "😎";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+@keyframes dance {
+    0%, 100% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-50%) rotate(-20deg) scale(1.1);
+    }
+    75% {
+        transform: translateY(-50%) rotate(20deg) scale(1.1);
+    }
+}
+
+.input-wrapper:hover::after {
+    animation: dance 0.5s ease infinite;
+}
+
+.input-wrapper:focus-within::after {
+    content: "😝";
+    animation: dance 0.3s ease infinite;
+}
+
+.input-wrapper input::placeholder {
+    color: #ccc;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus::placeholder {
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+.input-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        #4a90e2,
+        #6aa9e9,
+        #8bc1f0,
+        #add9f7,
+        #d0f0ff,
+        #add9f7,
+        #8bc1f0,
+        #6aa9e9,
+        #4a90e2
+    );
+    animation: rotate 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.input-wrapper:hover::before,
+.input-wrapper:focus-within::before {
+    opacity: 1;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shockwave {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 127, 127, 0.4);
+    }
+    70% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 20px rgba(255, 127, 127, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 127, 127, 0);
+    }
+}
+
+.input-wrapper:focus-within {
+    animation: shockwave 0.5s ease-out;
+}
+
+.input-wrapper {
+    --label-size: 0.8rem;
+    --label-transform: translateY(-170%) scale(0.8);
+}
+
+.input-wrapper input:placeholder-shown + label {
+    transform: translateY(-50%);
+    font-size: 1rem;
+}
+
+.input-wrapper label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: var(--label-transform);
+    font-size: var(--label-size);
+    color: #ff7f7f;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.input-wrapper input:not(:placeholder-shown) + label,
+.input-wrapper input:focus + label {
+    transform: var(--label-transform);
+    font-size: var(--label-size);
+}
+
+.message {
+    min-height: 2rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.attempts {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+        width: 95%;
+        margin: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .instructions {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .game-area {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        gap: 1.5rem;
+    }
+
+    .input-wrapper {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .input-wrapper input {
+        font-size: 1rem;
+        padding: 1rem 1rem 1rem 2.5rem;
+    }
+
+    .btn-class-name {
+        width: 50px;
+        height: 40px;
+    }
+
+    .btn-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .instructions {
+        font-size: 0.9rem;
+    }
+
+    .game-area {
+        gap: 1rem;
+    }
+}
+
+.leaderboard {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgb(95 112 147 / 76%);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard h2 {
+    text-align: center;
+    color: #45d3e3;
+    margin-bottom: 1rem;
+}
+
+.leaderboard table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgb(206, 177, 238);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.leaderboard th,
+.leaderboard td {
+    padding: 0.75rem;
+    text-align: center;
+    color: #a96fbdf2;
+}
+
+.leaderboard th {
+    background: rgba(228, 118, 255, 0.127);
+    font-weight: 600;
+}
+
+.leaderboard tr:nth-child(even) {
+    background: rgba(178, 220, 237, 0.196);
+}
+
+.score-form {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.score-form h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.score-form input {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.score-form button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.score-form button:hover {
+    background: #45a049;
+}
+
+.leaderboard-link,
+.back-link {
+    margin-top: 2.5rem;
+    text-align: center;
+}
+
+.leaderboard-link .btn-class-name,
+.back-link .btn-class-name {
+    --primary: 147, 112, 219;
+    --secondary: 106, 90, 205;
+    width: auto;
+    min-width: 280px;
+    height: auto;
+    border-radius: 15px;
+    padding: 1.2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.leaderboard-link .btn-class-name .front,
+.back-link .btn-class-name .front {
+    transform: none;
+    border-radius: 15px;
+    padding: 1.2rem 2.5rem;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, rgb(var(--primary)), rgb(var(--secondary)));
+    box-shadow: 0 6px 20px rgba(var(--primary), 0.3);
+    transition: all 0.3s ease;
+}
+
+.leaderboard-link .btn-class-name:hover .front,
+.back-link .btn-class-name:hover .front {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(var(--primary), 0.4);
+}
+
+.leaderboard-link .btn-class-name:active .front,
+.back-link .btn-class-name:active .front {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(var(--primary), 0.3);
+}
+
+/* Different colors for different buttons */
+.leaderboard-link .btn-class-name {
+    --primary: 147, 112, 219;  /* Purple */
+    --secondary: 106, 90, 205;
+}
+
+.back-link .btn-class-name {
+    --primary: 102, 205, 170;  /* Teal */
+    --secondary: 32, 178, 170;
+}
